@@ -1,10 +1,20 @@
-FROM python:3.8-slim
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
 
-WORKDIR /movie-recommendation-system
+# Set the working directory in the container
+WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+# Copy the requirements.txt to the container
+COPY requirements.txt .
 
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code to the container
 COPY . .
 
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Expose the port the app runs on
+EXPOSE 5000
+
+# Define the command to run the application
+CMD ["python", "main.py"]

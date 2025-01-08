@@ -1,0 +1,4 @@
+apiVersion: v2
+name: movie-recommendation-system
+description: A Helm chart for the movie recommendation system
+version: 0.1.0
